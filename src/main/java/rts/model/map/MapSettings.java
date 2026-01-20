@@ -65,6 +65,10 @@ public class MapSettings implements Serializable
      */
     public Coords nextStartPlace()
     {
+        if(place >= startPlaces.size())
+        {
+            throw new IllegalStateException("No more start places available. Maximum players: " + startPlaces.size());
+        }
         return startPlaces.get(place++);
     }
 }

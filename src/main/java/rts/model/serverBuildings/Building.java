@@ -295,12 +295,19 @@ public abstract class Building extends PlayerObject implements BuildingControl, 
         }
         /**
          * Send item quantity.
-         * 
+         *
          * @param item the item
          */
         protected void sendItemQuantity(final Item item)
         {
-            getOwner().send(new ToClientItemEvent(getID(), item, items.get(item).getQuantity()));
+            try
+            {
+                getOwner().send(new ToClientItemEvent(getID(), item, getSlotFor(item).getQuantity()));
+            }
+            catch(final ItemSlotNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
         /**
          * Gets the slot for.
@@ -360,13 +367,20 @@ public abstract class Building extends PlayerObject implements BuildingControl, 
         }
         /**
          * Put ingredient.
-         * 
+         *
          * @param item the item
          */
         public void putIngredient(final Item item)
         {
-            items.get(item).put();
-            sendItemQuantity(item);
+            try
+            {
+                getSlotFor(item).put();
+                sendItemQuantity(item);
+            }
+            catch(final ItemSlotNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
         /**
          * Utilize ingredients.
@@ -487,13 +501,20 @@ public abstract class Building extends PlayerObject implements BuildingControl, 
         }
         /**
          * Take product.
-         * 
+         *
          * @param item the item
          */
         public void takeProduct(final Item item)
         {
-            items.get(item).take();
-            sendItemQuantity(item);
+            try
+            {
+                getSlotFor(item).take();
+                sendItemQuantity(item);
+            }
+            catch(final ItemSlotNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
         /**
          * Checks for place for.
@@ -523,14 +544,21 @@ public abstract class Building extends PlayerObject implements BuildingControl, 
         }
         /**
          * Magic add item.
-         * 
+         *
          * @param item the item
          * @param n the n
          */
         protected void magicAddItem(final Item item, final int n)
         {
-            items.get(item).add(n);
-            sendItemQuantity(item);
+            try
+            {
+                getSlotFor(item).add(n);
+                sendItemQuantity(item);
+            }
+            catch(final ItemSlotNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
         /**
          * Pending take.

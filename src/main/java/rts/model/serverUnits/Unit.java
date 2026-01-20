@@ -88,6 +88,6 @@ public abstract class Unit extends PlayerObject implements AbstractUnit
     }
     public int getAttackDistance()
     {
-        return Integer.MAX_VALUE;
+        return 0;
     }
 }

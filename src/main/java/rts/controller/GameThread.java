@@ -7,14 +7,14 @@ package rts.controller;
 public abstract class GameThread implements Runnable
 {
     /** Trwa dzialanie */
-    private boolean running;
+    private volatile boolean running;
     /** Watek obslugujacy. */
     private Thread thread;
 
     /**
      * Start.
      */
-    public void start()
+    public synchronized void start()
     {
         if(running == false)
         {
@@ -26,7 +26,7 @@ public abstract class GameThread implements Runnable
     /**
      * Stop.
      */
-    public void stop()
+    public synchronized void stop()
     {
         running = false;
         if(thread != null)
