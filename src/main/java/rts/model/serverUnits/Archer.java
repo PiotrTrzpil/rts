@@ -27,4 +27,9 @@ public class Archer extends Unit
     {
         return maxRange;
     }
+    @Override
+    public int getDamage()
+    {
+        return damage;
+    }
 }

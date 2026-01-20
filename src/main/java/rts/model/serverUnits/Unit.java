@@ -90,4 +90,8 @@ public abstract class Unit extends PlayerObject implements AbstractUnit
     {
         return 0;
     }
+    public int getDamage()
+    {
+        return 0;
+    }
 }

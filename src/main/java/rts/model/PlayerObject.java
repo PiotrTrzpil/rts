@@ -110,7 +110,7 @@ public abstract class PlayerObject extends MapObject implements
     public void beHit(final int damage)
     {
         healthPoints -= damage;
-        if(healthPoints < 0)
+        if(healthPoints <= 0)
         {
             alive = false;
         }

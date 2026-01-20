@@ -27,4 +27,9 @@ public class Warrior extends Unit
     {
         return maxRange;
     }
+    @Override
+    public int getDamage()
+    {
+        return damage;
+    }
 }

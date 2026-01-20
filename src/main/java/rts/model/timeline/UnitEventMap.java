@@ -59,13 +59,17 @@ public class UnitEventMap
     }
     /**
      * Usuwa zadanie, usuwajac mapowanie, jesli zadanie jest ostatnie.
-     * 
+     *
      * @param unitTask zadanie
      */
     public void remove(final UnitTask unitTask)
     {
         final AbstractUnit unit = ((UnitEvent) unitTask.event).getUnit();
         final LinkedList<UnitTask> scheduledList = map.get(unit);
+        if(scheduledList == null)
+        {
+            return;
+        }
         scheduledList.remove(unitTask);
         if(scheduledList.size() == 0)
         {

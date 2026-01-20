@@ -19,6 +19,7 @@ import rts.view.clientModel.BuildingImage;
 
 public class ProductionBuilding extends Building// BuildingWithItems
 {
+    private static final Random rand = new Random();
     private final ArrayList<ItemRecipe> recipes;
     private ItemRecipe current;
     private final ItemDemander demanderPart;
@@ -79,7 +80,6 @@ public class ProductionBuilding extends Building// BuildingWithItems
         }
         if(!readyList.isEmpty())
         {
-            final Random rand = new Random(System.currentTimeMillis());
             current = readyList.get(rand.nextInt(readyList.size()));
             demanderPart.utilizeIngredients(current.getIngredients());
             final Production production = new Production(current);
