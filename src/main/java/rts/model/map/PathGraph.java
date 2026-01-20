@@ -351,11 +351,16 @@ public class PathGraph
     public void deletePathNodes(final Building building)
     {
         final ArrayList<PathNode> arrayList = buildingNodes.get(building);//building.getPathNodes();
+        if(arrayList == null)
+        {
+            return;
+        }
         for(final PathNode node : arrayList)
         {
             removeNode(node);
         }
         arrayList.clear();
+        buildingNodes.remove(building);
     }
 
     /**

@@ -106,7 +106,7 @@ public class ServerObjectHolder
 
         /**
          * Instantiates a new creates the unit event.
-         * 
+         *
          * @param type klasa okreslajaca rodzaj jednostki.
          * @param player gracz majacy stac sie posiadaczem jednostki.
          * @param position polozenie na mapie
@@ -122,6 +122,7 @@ public class ServerObjectHolder
             catch(final Exception e)
             {
                 e.printStackTrace();
+                throw new RuntimeException("Failed to create unit of type: " + type, e);
             }
         }
         /*

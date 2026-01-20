@@ -256,7 +256,7 @@ public class CommandCenter
             final Velocity velocity = new Velocity(l.getVector(vel));
             change = new ChangeMoveEvent(unit, a, time, velocity);
             sequence.add(change);
-            time = GameTime.moveTime(a, b, vel);
+            time += GameTime.moveTime(a, b, vel);
             a = b;
         }
         change = new ChangeMoveEvent(unit, a, time, new Velocity(0, 0));
@@ -525,7 +525,7 @@ public class CommandCenter
             }
             if(object.distance(unit) < unit.getAttackDistance())
             {
-                object.beHit(40);
+                object.beHit(unit.getDamage());
                 serverModel.sendToAll(new ToClientObjectDamaged(object.getID(), object.getHP()));
                 if(!object.isAlive())
                 {

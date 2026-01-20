@@ -95,11 +95,12 @@ public class Builder extends Unit
     @Override
     public void activate()
     {
-        //        getOwner().getWorkerOvermind().getBuilders().add(this);
+        getOwner().getWorkerOvermind().getBuilders().add(this);
     }
-    //    @Override
-    //    public void deathCleaning()
-    //    {
-    //        getOwner().getWorkerOvermind().getBuilders().remove(this);
-    //    }
+    @Override
+    public void deactivate()
+    {
+        super.deactivate();
+        getOwner().getWorkerOvermind().getBuilders().remove(this);
+    }
 }

@@ -15,7 +15,7 @@ public class ToServerUnitFollowEvent extends ToServerUnitEvent
         super(unit);
         this.target = target;
     }
-    public ObjectID getTargeID()
+    public ObjectID getTargetID()
     {
         return target;
     }

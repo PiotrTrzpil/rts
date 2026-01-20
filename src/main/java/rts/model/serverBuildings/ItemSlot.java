@@ -86,12 +86,16 @@ public class ItemSlot implements Comparable<ItemSlot>
     }
     /**
      * Removes the.
-     * 
+     *
      * @param n the n
      */
     public void remove(final int n)
     {
         quantity -= n;
+        if(quantity < 0)
+        {
+            throw new RuntimeException("Item quantity cannot be negative");
+        }
     }
     /**
      * Can be taken.

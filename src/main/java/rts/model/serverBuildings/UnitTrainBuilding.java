@@ -118,7 +118,7 @@ public class UnitTrainBuilding extends Building
     }
     /**
      * Anuluje trening
-     * 
+     *
      * @param id the id
      */
     private void cancelTrain(final TrainID id)
@@ -131,11 +131,13 @@ public class UnitTrainBuilding extends Building
             tryStartNext();
             return;
         }
-        for(final Training train : unitQueue)
+        final java.util.Iterator<Training> iterator = unitQueue.iterator();
+        while(iterator.hasNext())
         {
+            final Training train = iterator.next();
             if(train.id.equals(id))
             {
-                unitQueue.remove(train);
+                iterator.remove();
                 break;
             }
         }

@@ -46,9 +46,9 @@ public class BuildMap
         {
             for(int j = 0; j < tiledimX; j++)
             {
-                if(i == 0 || i == tiledimX - 1 || j == 0 || j == tiledimY - 1)
+                if(i == 0 || i == tiledimY - 1 || j == 0 || j == tiledimX - 1)
                 {
-                    tileMap[j][i].setBuildable(false);
+                    tileMap[i][j].setBuildable(false);
                 }
             }
         }

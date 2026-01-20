@@ -30,13 +30,14 @@ public class ServerNetBuffer extends GameThread implements Runnable
     @Override
     protected void job()
     {
-        final QueueEvent takeEvent = take();// .execute();
+        final QueueEvent takeEvent = take();
+        if(takeEvent == null)
+        {
+            // Interrupted while waiting for event, thread is likely stopping
+            return;
+        }
         try
         {
-            if(takeEvent == null)
-            {
-                throw new NullPointerException("Null server event");
-            }
             handler.manageEvent(takeEvent);
         }
         catch(final UnknownEventException e)
