@@ -92,15 +92,4 @@ public class Builder extends Unit
     //        // addCmdLast(new CmdGoAndBuild(building));
     //
     //    }
-    @Override
-    public void activate()
-    {
-        getOwner().getWorkerOvermind().getBuilders().add(this);
-    }
-    @Override
-    public void deactivate()
-    {
-        super.deactivate();
-        getOwner().getWorkerOvermind().getBuilders().remove(this);
-    }
 }
